@@ -10,23 +10,34 @@
 
 <body>
   <div class="container">
-    <div class="row">
-      <h4>Sign in to view train times</h4>
-      <div class="input-field col s6">
-        <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
-      </div>
+    <!-- if logged in -->
+    {{#logged_in}}
+    <h4>Hello {{email}}!</h4>
+    <p>You're now logged in :)</p>
+    {{/logged_in}}
+
+
+
+    <!-- if not logged in -->
+    {{^logged_in}}
+    <form class="col s12" action="/login" method="post">
       <div class="row">
+        <h4>Login</h4>
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+          <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Email">
+          <label for="email"></label>
         </div>
-      </div>
-      <div>
-        <button type="submit" name="button" class="waves-effect waves-light btn">Signin</button>
-        <a href="/signup">or sign up!</a>
-      </div>
-    </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="password" type="password" name="password" class="validate" placeholder="password">
+            <label for="password"> </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <a href="/signup">or sign up!</a>
+        </div>
+    </form>
+    {{/logged_in}}
+
 </body>
 
 </html>

@@ -10,22 +10,25 @@
 
 <body>
   <div class="container">
+  <form class="col s12" action="/signup" method="post">
     <div class="row">
       <h4>Sign up here</h4>
       <div class="input-field col s6">
-        <input id="email" type="email" class="validate">
-        <label for="email">Enter Email</label>
+        <input id="email" type="email" name="email" class="validate" placeholder="email">
+        <label for="email"></label>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
-          <label for="password">Enter Password</label>
+          <input id="password" type="password" name="password" class="validate" placeholder="password">
+          <label for="password"> </label>
         </div>
       </div>
       <div>
         <button type="submit" name="button" class="waves-effect waves-light btn">Register</button>
       </div>
     </div>
+  </form>
+    <a href="/logout">Logout!</a>
 </body>
 
 </html>

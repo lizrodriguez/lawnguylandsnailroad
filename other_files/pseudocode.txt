@@ -5,22 +5,26 @@ WDI Project 2
 /index
 -logo
 -title
--signup button
--login button
+-signin button
+-signup link
 
 /signup
 -email
 -password
+-insert query to database
 
 /login
 -email
 -password
+-redirect to index page signed in 
 
 / (signed in session)
--departing station
--arriving station
+show hello email name
+-departing station selection
+-arriving station selection
 
 /results
+make call to API data
 -times, track, status
 -keep route as favorite
 
