@@ -1,0 +1,28 @@
+Lawn Guyland Snail Road
+A LIRR time table clone
+WDI Project 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/index
+-logo
+-title
+-signup button
+-login button
+
+/signup
+-email
+-password
+
+/login
+-email
+-password
+
+/ (signed in session)
+-departing station
+-arriving station
+
+/results
+-times, track, status
+-keep route as favorite
+
+/logout
+-login again button

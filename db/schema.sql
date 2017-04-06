@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS trains CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS usertrains CASCADE;
+
+CREATE TABLE trains (
+  id SERIAL PRIMARY KEY,
+  shortname VARCHAR(255),
+  longname VARCHAR(255)
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255),
+  password VARCHAR(255)
+);
+
+CREATE TABLE usertrains (
+  id SERIAL PRIMARY KEY,
+  IDtrain INTEGER REFERENCES trains (id),
+  IDuser INTEGER REFERENCES users (id)
+);

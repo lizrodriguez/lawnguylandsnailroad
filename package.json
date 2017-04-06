@@ -1,0 +1,29 @@
+{
+  "name": "lawnguylandsnailroad",
+  "version": "1.0.0",
+  "description": "A LIRR timetable clone",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizrodriguez/lawnguylandsnailroad.git"
+  },
+  "author": "Liz Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizrodriguez/lawnguylandsnailroad/issues"
+  },
+  "homepage": "https://github.com/lizrodriguez/lawnguylandsnailroad#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "method-override": "^2.3.8",
+    "moment": "^2.18.1",
+    "mustache-express": "^1.2.4",
+    "pg-promise": "^5.6.4"
+  }
+}
