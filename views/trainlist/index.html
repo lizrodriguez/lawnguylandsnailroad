@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lawn Guyland Snail Road</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <script src="/js/jquery.js"></script>
+  <script src="/js/materialize.min.js"></script>
+  <script src="/js/client.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- test -->
+    <label for="longname">Departure</label>
+    <select name="longname">
+  {{#trains}}
+  <option value="{{id}}">{{longname}}</option>
+  {{/trains}}
+  </select>
+  </div>
+</body>
+
+</html>

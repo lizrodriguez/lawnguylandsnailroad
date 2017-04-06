@@ -32,17 +32,26 @@ app.get('/', function(req, res){
       "logged_in": true,
       "email": req.session.user.email
     };
-
     res.render('index', data);
   } else {
     res.render('index');
   }
 });
 
-
 // app.get('/', function(req, res){
 //   res.render('index');
 // });
+
+app.get('/trainlist', function(req, res){
+  db.any("SELECT * FROM trains")
+      .then(function(data){
+        let trains_data = {
+          trains: data
+          }
+      // console.log(trains_data);
+      res.render('trainlist/index', trains_data);
+      });
+});
 
 app.get('/signup', function(req, res){
   res.render('signup/index');

@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <title>Lawn Guyland Snail Road</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <script src="/js/jquery.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/client.js"></script>
@@ -19,16 +19,14 @@
     {{#logged_in}}
     <h5>Hello {{email}}! You're now logged in :)</h5>
 
-<div class="row">
-    <div class="input-field col s6">
-        <select>
-          <option value="" disabled selected>Choose departure</option>
-          {{#trains}}
-          <option value="{{longname}}">{{longname}}</option>
-          {{/trains}}
-          <!-- <option value="2">Option 2</option> -->
-
-        </select>
+    <div class="row">
+      <div class="input-field col s6">
+        <select name="longname">
+              {{#trains}}
+              <option value="Choose departure" disabled selected>Choose departure</option>
+              <option value="{{longname}}">{{longname}}</option>
+              {{/trains}}
+            </select>
         <label>Departure location</label>
       </div>
     </div>
@@ -57,6 +55,7 @@
     </form>
     {{/logged_in}}
 
-</body>
 
+
+</body>
 </html>
