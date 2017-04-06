@@ -1,14 +1,3 @@
-$(document).ready(function(){
-
-
-
-
-
-
-
-
-
-
-
-
-});//end document.ready
+$(document).ready(function() {
+  $('select').material_select();
+});
