@@ -22,7 +22,7 @@ WDI Project 2
 show hello email name
 /trainslist - ideal to put on homepage with signed in session
 -departing station selection - jquery - get value then do api call
--arriving station selection
+-arriving station selection - jquery - get value then do api call
 
 /results
 make call to API data
