@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Lawn Guyland Snail Road</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
   <script src="/js/jquery.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/client.js"></script>
 
 </head>
-
 <body>
   <div class="container">
-    <!-- test -->
-    <label for="longname">Departure</label>
-    <select name="longname">
-  {{#trains}}
-  <option value="{{id}}">{{longname}}</option>
-  {{/trains}}
-  </select>
-  </div>
-</body>
+    <div class="row">
+      <div class="input-field col s6">
+        <h5>Select Departure Train</h5>
+        <!-- <label for="longname"></label> -->
+        <!-- <select name="longname"> -->
+          <select name="departure">
+            {{#trains}}
+              <option value="{{shortname}}">{{longname}}</option>
+                <!-- <option value="{{id}}">{{longname}}</option> -->
+            {{/trains}}
+          </select>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="input-field col s6">
+        <h5>Select Arrival Train</h5>
+        <!-- <label for="longname"></label> -->
+          <!-- <select name="longname"> -->
+            <select name="arrival">
+            {{#trains}}
+              <option value="{{shortname}}">{{longname}}</option>
+            {{/trains}}
+          </select>
+      </div>
+    </div>
+
+  <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Submit</button>
+
+  </div><!--  end container -->
+</body>
 </html>

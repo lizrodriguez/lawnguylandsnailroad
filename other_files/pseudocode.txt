@@ -20,8 +20,9 @@ WDI Project 2
 
 / (signed in session)
 show hello email name
--departing station selection - query from traintable
--arriving station selection - query from traintable
+/trainslist - ideal to put on homepage with signed in session
+-departing station selection - jquery - get value then do api call
+-arriving station selection
 
 /results
 make call to API data

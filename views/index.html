@@ -6,7 +6,7 @@
   <title>Lawn Guyland Snail Road</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
   <script src="/js/jquery.js"></script>
   <script src="/js/materialize.min.js"></script>
   <script src="/js/client.js"></script>
@@ -18,22 +18,17 @@
     <!-- if logged in -->
     {{#logged_in}}
     <h5>Hello {{email}}! You're now logged in :)</h5>
-
-    <div class="row">
-      <div class="input-field col s6">
+    <h5><a href="/trainlist">Go to select your trains</a></h5>
+    <a href="/logout">Logout!</a>
+      <!-- <div class="container">
+        <label for="longname">Departure</label>
         <select name="longname">
-              {{#trains}}
-              <option value="Choose departure" disabled selected>Choose departure</option>
-              <option value="{{longname}}">{{longname}}</option>
-              {{/trains}}
-            </select>
-        <label>Departure location</label>
-      </div>
-    </div>
-
+          {{#trains}}
+          <option value="{{id}}">{{longname}}</option>
+          {{/trains}}
+        </select>
+    </div> -->
     {{/logged_in}}
-
-
 
     <!-- if not logged in -->
     {{^logged_in}}
@@ -49,7 +44,7 @@
             <input id="password" type="password" name="password" class="validate" placeholder="password">
             <label for="password"> </label>
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Login</button>
           <a href="/signup">or sign up!</a>
         </div>
     </form>

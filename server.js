@@ -26,6 +26,10 @@ app.use(session({
 
 var db = pgp('postgres://liz@localhost:5432/lirr_db');
 
+// app.get('/', function(req, res){
+//   res.render('index');
+// });
+
 app.get('/', function(req, res){
   if(req.session.user){
     let data = {
@@ -33,24 +37,21 @@ app.get('/', function(req, res){
       "email": req.session.user.email
     };
     res.render('index', data);
+    // res.redirect('/trainlist');
   } else {
     res.render('index');
   }
 });
 
-// app.get('/', function(req, res){
-//   res.render('index');
-// });
-
 app.get('/trainlist', function(req, res){
   db.any("SELECT * FROM trains")
-      .then(function(data){
+    .then(function(data){
         let trains_data = {
           trains: data
           }
       // console.log(trains_data);
-      res.render('trainlist/index', trains_data);
-      });
+      res.render('trainlist/index', trains_data); //gets list of trains to put on /trainslist
+    });
 });
 
 app.get('/signup', function(req, res){
@@ -74,11 +75,9 @@ app.post('/signup', function(req, res){
     });
 });
 
-
 app.post('/login', function(req, res){
   let data = req.body;
   let auth_error = "Authorization Failed: Invalid email/password";
-
   db
     .one("SELECT * FROM users WHERE email = $1", [data.email])
     .catch(function(){
@@ -96,6 +95,10 @@ app.post('/login', function(req, res){
     });
 });
 
+app.get('/logout', function(req, res){
+  req.session.user = false;
+  res.redirect("/");
+});
 
 app.listen(3000, function () {
   console.log('Server running, listening on port 3000 ┬──┬◡ﾉ(°-°ﾉ)');
