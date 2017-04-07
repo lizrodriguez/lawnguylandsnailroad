@@ -1,17 +1,17 @@
 $(document).ready(function() {
 
-  let trainData = "";
   $('select').material_select();
 
   $('button').on('click',function(){
     let $departure = $('[name="departure"]').val();
     console.log("The 3 letter departure station is: " + $departure);
-
     let $arrival = $('[name="arrival"]').val();
     console.log("The 3 letter arrival station is: " + $arrival);
-
+    // arrival time not available through this api url
     let trains = "";
     let stops = "";
+    let $ul = $('<ul>');
+    let $results;
 
     $.ajax({ //https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
       url: "https://traintime.lirr.org/api/Departure?loc=" + $departure,
@@ -20,8 +20,6 @@ $(document).ready(function() {
       success: function(res){
         // console.log("The departure LOC is: " + res.LOC); //the departure LOC
         // console.log("The departure TIME is: " + res.TIME); //the current time of the query/computer
-        let sched = res.TRAINS[0].SCHED;
-        let trainline = res.TRAINS[0].DEST;
 
         // console.log("SCHED is "+  res.TRAINS[0].SCHED);
         // console.log("DEST is " + res.TRAINS[0].DEST);
@@ -29,20 +27,28 @@ $(document).ready(function() {
           trains = res.TRAINS[i];
           for (var j = 0; j < trains.STOPS.length; j++) {
             stops = trains.STOPS[j];
-            console.log(stops);
+            // console.log(stops);
+            let sched = res.TRAINS[i].SCHED;
+            let time = sched.split(" ");
+            let trainline = res.TRAINS[i].DEST;
+            let direction = res.TRAINS[i].DIR;
+            let trackNum = res.TRAINS[i].TRACK;
               if(stops === $arrival){
-                console.log("The scheduled times for your arrival are: ");
-                console.log(trains.SCHED);
+                // console.log("The next stops are: " + trains.SCHED);
                 //append results to page
-                $results = $('<p></p>');
-                $results.text("The scheduled times for your arrival are: " + trains.SCHED);
-                $('row').append($results);
-              }//end if
+                let $li = $('<li>' + time[1] + " to " + trainline + " " + direction + "-bound: Track " + trackNum + '</li>');
+                $results = $ul.append($li);
+                $('p#results').append($results);
+              }
           }
         }//end for i & j
+        // $('p#results').append($results);
 
-      }//end success function
-
+      },//end success function
+      error: function(res){
+        $('p#results').text("Please try again");
+        //throw error, try again
+      }
     })
 
   }) //button
