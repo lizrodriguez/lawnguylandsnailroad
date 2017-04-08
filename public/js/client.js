@@ -20,9 +20,6 @@ $(document).ready(function() {
       success: function(res){
         // console.log("The departure LOC is: " + res.LOC); //the departure LOC
         // console.log("The departure TIME is: " + res.TIME); //the current time of the query/computer
-
-        // console.log("SCHED is "+  res.TRAINS[0].SCHED);
-        // console.log("DEST is " + res.TRAINS[0].DEST);
         for (var i = 0; i < res.TRAINS.length; i++) {
           trains = res.TRAINS[i];
           for (var j = 0; j < trains.STOPS.length; j++) {

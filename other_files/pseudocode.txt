@@ -20,13 +20,15 @@ WDI Project 2
 
 / (signed in session)
 show hello email name
-/trainslist - ideal to put on homepage with signed in session
--departing station selection - jquery - get value then do api call
--arriving station selection - jquery - get value then do api call
 
-/results
-make call to API data
+/results- ideal to put on homepage with signed in session
+make call to API url
 -times, track, status
+-departing station selection - jquery - get value from api call
+-arriving station  - not available
+
+/user update - overrides all emails?
+
 -keep route as favorite
 
 /logout

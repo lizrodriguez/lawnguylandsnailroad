@@ -75,6 +75,34 @@ app.post('/signup', function(req, res){
     });
 });
 
+app.get('/user', function(req, res){
+  if(req.session.user){
+    let data = {
+      "logged_in": true,
+      "email": req.session.user.email
+    };
+    res.render('user/index', data);
+    // res.redirect('/trainlist');
+  } else {
+    res.render('user/index');
+  }
+});
+// app.get('/user', function(req, res){
+//   res.render('user/index');
+// });
+
+app.put('/user', function(req, res){
+  db
+    .none("UPDATE users SET email = $1 WHERE email = $2",
+      [req.body.email, req.session.user.email]
+    ).catch(function(){
+      res.send('Failed to update user.');
+    }).then(function(){
+      // res.redirect("/");
+      res.send('User updated.');
+    });
+});
+
 app.post('/login', function(req, res){
   let data = req.body;
   let auth_error = "Authorization Failed: Invalid email/password";

@@ -17,18 +17,24 @@
   <div class="container">
     <!-- if logged in -->
     {{#logged_in}}
-    <h5>Hello {{email}}! You're now logged in :)</h5>
-    <h5><a href="/trainlist">Go to select your trains</a></h5>
-    <h5><a href="/user">Update user profile</a></h5>
-    <a href="/logout">Logout!</a>
-      <!-- <div class="container">
-        <label for="longname">Departure</label>
-        <select name="longname">
-          {{#trains}}
-          <option value="{{id}}">{{longname}}</option>
-          {{/trains}}
-        </select>
-    </div> -->
+    <h5>Hello {{email}}! You're logged in.</h5>
+    <h5>Update your email or password:</h5>
+      <form class="col s12" action="/user?_method=PUT" method="post">
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Email" value="{{email}}">
+            <label for="email"></label>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="password" type="password" name="password" class="validate" placeholder="password">
+              <label for="password"> </label>
+            </div>
+            <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Update</button>
+            <a href="/logout">Logout!</a>
+          </div>
+      </form>
+
     {{/logged_in}}
 
     <!-- if not logged in -->
