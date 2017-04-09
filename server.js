@@ -24,7 +24,7 @@ app.use(session({
   cookie: { secure: false }
 }))
 
-var db = pgp('postgres://liz@localhost:5432/lirr_db');
+var db = pgp('postgres://chas@localhost:5432/lirr_db');
 
 // app.get('/', function(req, res){
 //   res.render('index');
@@ -58,6 +58,10 @@ app.get('/signup', function(req, res){
   res.render('signup/index');
 });
 
+app.get('/signup/tryagain', function(req, res){
+  res.render('signup/tryagain');
+});
+
 app.post('/signup', function(req, res){
   let data = req.body;
   bcrypt
@@ -66,13 +70,14 @@ app.post('/signup', function(req, res){
         "INSERT INTO users (email, password) VALUES ($1, $2)",
         [data.email, hash]
       ).catch(function(e){
-        res.send('Failed to create user: ' + e);
+        res.redirect('/signup/tryagain');
       }).then(function(){
         console.log(data.email + hash + "User created!");
         // res.send('User created!');
-        res.redirect('/');
+        res.redirect('/trainlist');
       });
     });
+
 });
 
 app.get('/user', function(req, res){
@@ -103,21 +108,26 @@ app.put('/user', function(req, res){
     });
 });
 
+app.get('/tryagain', function(req, res){
+  res.render('/tryagain');
+});
+
 app.post('/login', function(req, res){
   let data = req.body;
   let auth_error = "Authorization Failed: Invalid email/password";
   db
     .one("SELECT * FROM users WHERE email = $1", [data.email])
     .catch(function(){
-      res.send(auth_error);
+      res.redirect("/tryagain");
+      // res.send(auth_error);
     })
     .then(function(user){
       bcrypt.compare(data.password, user.password, function(err, cmp){
         if(cmp){
           req.session.user = user;
-          res.redirect("/");
+          res.redirect("/trainlist");
         } else {
-          res.send(auth_error);
+          res.redirect("/tryagain");
         }
       });
     });
