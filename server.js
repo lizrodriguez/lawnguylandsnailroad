@@ -26,20 +26,20 @@ app.use(session({
 
 var db = pgp('postgres://chas@localhost:5432/lirr_db');
 
-// app.get('/', function(req, res){
-//   res.render('index');
-// });
-
 app.get('/', function(req, res){
+  res.render('login/index');
+});
+
+app.get('/login', function(req, res){
   if(req.session.user){
     let data = {
       "logged_in": true,
       "email": req.session.user.email
     };
-    res.render('index', data);
+    res.render('login/index', data);
     // res.redirect('/trainlist');
   } else {
-    res.render('index');
+    res.render('login/index');
   }
 });
 
@@ -109,7 +109,7 @@ app.put('/user', function(req, res){
 });
 
 app.get('/tryagain', function(req, res){
-  res.render('/tryagain');
+  res.render('login/tryagain');
 });
 
 app.post('/login', function(req, res){
