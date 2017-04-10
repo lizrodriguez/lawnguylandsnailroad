@@ -26,12 +26,9 @@ WDI Project 2
 -arriving station  - not available
 
 /user update
-
 /user delete
 
 Left to do:
 
-make call to API url - change to backend
+API call - change to backend?
 -keep route as favorite
-
--login again button

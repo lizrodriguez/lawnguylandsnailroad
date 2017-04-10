@@ -43,6 +43,19 @@ app.get('/login', function(req, res){
   }
 });
 
+// app.get('/trainlist', function(req, res){
+//   if(req.session.user){
+//     let data = {
+//       "logged_in": true,
+//       "email": req.session.user.email
+//     };
+//     res.render('trainlist/index', data);
+//   } else {
+//     res.render('trainlist/index');
+//   }
+// });
+
+
 app.get('/trainlist', function(req, res){
   db.any("SELECT * FROM trains")
     .then(function(data){
@@ -53,6 +66,16 @@ app.get('/trainlist', function(req, res){
       res.render('trainlist/index', trains_data); //gets list of trains to put on /trainslist
     });
 });
+
+// app.post('/user/fave', function(req, res){
+//   console.log(req.body);
+//     db
+//       .none("UPDATE users SET stationID = $1 WHERE stationID = $2",
+//         [req.body.stationID, req.session.user.stationID])
+//       .then(function(){
+//         console.log("Fave saved: " + data);
+//     });
+// });
 
 app.get('/signup', function(req, res){
   res.render('signup/index');

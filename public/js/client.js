@@ -5,6 +5,7 @@ $(document).ready(function() {
   $('button').on('click',function(){
     let $departure = $('[name="departure"]').val();
     console.log("The 3 letter departure station is: " + $departure);
+
     let $arrival = $('[name="arrival"]').val();
     console.log("The 3 letter arrival station is: " + $arrival);
     // arrival time not available through this api url
@@ -12,9 +13,7 @@ $(document).ready(function() {
     let stops = "";
     let $ul = $('<ul>');
     let $results;
-
     $.ajax({ //https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
-      //plugin needed for chrome to enable cross origin resource sharing temporarily since running app locally
       url: "https://traintime.lirr.org/api/Departure?loc=" + $departure,
       method: "GET",
       dataType: "json",
@@ -41,6 +40,7 @@ $(document).ready(function() {
         }//end for i & j
 
       },//end success function
+
       error: function(res){
         $('p#results').text("Please try again");
         //throw error, try again
