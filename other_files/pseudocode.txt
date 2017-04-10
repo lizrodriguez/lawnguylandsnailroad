@@ -18,22 +18,20 @@ WDI Project 2
 -password
 -redirect to index page signed in
 
-/ (signed in session)
-show hello email name
-
 /logout
 
-Left to do:
-
-/results-signed in session
-make call to API url - change to backend
+/trainlist
 -times, track, status
--departing station selection 
+-departing station selection
 -arriving station  - not available
 
 /user update
-/user delete
--keep route as favorite
 
+/user delete
+
+Left to do:
+
+make call to API url - change to backend
+-keep route as favorite
 
 -login again button

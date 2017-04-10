@@ -14,12 +14,13 @@ $(document).ready(function() {
     let $results;
 
     $.ajax({ //https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+      //plugin needed for chrome to enable cross origin resource sharing temporarily since running app locally
       url: "https://traintime.lirr.org/api/Departure?loc=" + $departure,
       method: "GET",
       dataType: "json",
       success: function(res){
-        // console.log("The departure LOC is: " + res.LOC); //the departure LOC
-        // console.log("The departure TIME is: " + res.TIME); //the current time of the query/computer
+        console.log("The departure LOC is: " + res.LOC); //the departure LOC
+        console.log("The departure TIME is: " + res.TIME); //the current time of the query/computer
         for (var i = 0; i < res.TRAINS.length; i++) {
           trains = res.TRAINS[i];
           for (var j = 0; j < trains.STOPS.length; j++) {
@@ -31,15 +32,13 @@ $(document).ready(function() {
             let direction = res.TRAINS[i].DIR;
             let trackNum = res.TRAINS[i].TRACK;
               if(stops === $arrival){
-                // console.log("The next stops are: " + trains.SCHED);
                 //append results to page
-                let $li = $('<li>' + time[1] + " to " + trainline + " " + direction + "-bound: Track " + trackNum + '</li>');
+                let $li = $('<li>' + time[1] + " to " + trainline + " trainline going " + direction + "-bound: Track " + trackNum + '</li>');
                 $results = $ul.append($li);
                 $('p#results').append($results);
               }
           }
         }//end for i & j
-        // $('p#results').append($results);
 
       },//end success function
       error: function(res){

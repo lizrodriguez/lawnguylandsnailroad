@@ -18,17 +18,10 @@
     <!-- if logged in -->
     {{#logged_in}}
     <h5>Hello {{email}}! You're now logged in :)</h5>
-    <h5><a href="/trainlist">Go to select your trains</a></h5>
-    <h5><a href="/user">Update user profile</a></h5>
-    <a href="/logout">Logout!</a>
-      <!-- <div class="container">
-        <label for="longname">Departure</label>
-        <select name="longname">
-          {{#trains}}
-          <option value="{{id}}">{{longname}}</option>
-          {{/trains}}
-        </select>
-    </div> -->
+    <a href="/trainlist" name="button" class="waves-effect waves-light btn #2196f3 blue">Select trains</a>
+    <a href="/user" name="button" class="waves-effect waves-light btn #2196f3 blue">Update email</a>
+    <a href="/user/show" name="button" class="waves-effect waves-light btn #2196f3 blue">Delete account</a>
+    <a href="/logout">Logout!</a> -->
     {{/logged_in}}
 
     <!-- if not logged in -->
@@ -45,13 +38,13 @@
             <input id="password" type="password" name="password" class="validate" placeholder="password">
             <label for="password"> </label>
           </div>
-          <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Login</button>
-          <a href="/signup">or sign up!</a>
         </div>
+        <div>
+        <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Login</button>
+      </div>
+    </div>
     </form>
+      <a href="/signup">or sign up!</a>
     {{/logged_in}}
-
-
-
 </body>
 </html>

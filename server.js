@@ -173,14 +173,11 @@ app.get('/delete/:id', function (req, res){
   .none("DELETE FROM users WHERE id = $1", [id])
   .then(function(){
   res.redirect("/user/success");
-  // res.send('User updated.');
   })
   .catch(function(){
     res.redirect('/user/tryagain');
   });
 });
-
-
 
 app.get('/logout', function(req, res){
   req.session.user = false;

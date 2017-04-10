@@ -16,25 +16,26 @@
 <body>
   <div class="container">
     <!-- if logged in -->
-    <!-- {{#logged_in}} -->
-    <!-- <h5>Hello {{email}}! You're logged in.</h5> -->
-    <h5>Update your email:</h5>
+    {{#logged_in}}
+    <h3>Hello {{email}}!</h3>
+    <h5>Update your email address:</h5>
       <form class="col s12" action="/user?_method=PUT" method="post">
         <div class="row">
           <div class="input-field col s6">
             <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Email" value="{{email}}">
             <label for="email"></label>
           </div>
+        </div>
           <div class="row">
             <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Update</button>
             <a href="/logout">Logout!</a>
           </div>
       </form>
 
-    <!-- {{/logged_in}} -->
+    {{/logged_in}}
 
     <!-- if not logged in -->
-    <!-- {{^logged_in}}
+    {{^logged_in}}
     <form class="col s12" action="/login" method="post">
       <div class="row">
         <h4>Login</h4>
@@ -47,13 +48,17 @@
             <input id="password" type="password" name="password" class="validate" placeholder="password">
             <label for="password"> </label>
           </div>
-          <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Login</button>
-          <a href="/signup">or sign up!</a>
+
+          <div>
+            <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Login</button>
+          </div>
         </div>
     </form>
-    {{/logged_in}} -->
+    <a href="/signup">or sign up!</a>
+    {{/logged_in}}
 
 
 
+</div>
 </body>
 </html>
