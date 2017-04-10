@@ -15,14 +15,14 @@
 <body>
   <div class="container">
     <div class="row">
-      <h4>Unsuccessful, please try again</h4>
-
-      <div>
-        <a href="/" name="button" class="waves-effect waves-light btn #2196f3 blue">try again</a>
+      <div class="input-field col s6">
+        <h5>Select email to delete:</h5>
+        {{#users}}
+        <a href="/delete/{{id}}">{{email}}</a><br>
+        {{/users}}
       </div>
     </div>
-
-
+  </div>
 </body>
 
 </html>

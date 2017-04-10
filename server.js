@@ -24,7 +24,7 @@ app.use(session({
   cookie: { secure: false }
 }))
 
-var db = pgp('postgres://chas@localhost:5432/lirr_db');
+var db = pgp('postgres://liz@localhost:5432/lirr_db');
 
 app.get('/', function(req, res){
   res.render('login/index');
@@ -77,7 +77,6 @@ app.post('/signup', function(req, res){
         res.redirect('/trainlist');
       });
     });
-
 });
 
 app.get('/user', function(req, res){
@@ -92,25 +91,37 @@ app.get('/user', function(req, res){
     res.render('user/index');
   }
 });
-// app.get('/user', function(req, res){
-//   res.render('user/index');
-// });
+
+app.get('/user', function(req, res){
+  res.render('user/index');
+});
+
+app.get('/user/success', function(req, res){
+  res.render('user/success');
+});
+
+app.get('/user/tryagain', function(req, res){
+  res.render('user/tryagain');
+});
+
 
 app.put('/user', function(req, res){
   db
     .none("UPDATE users SET email = $1 WHERE email = $2",
-      [req.body.email, req.session.user.email]
-    ).catch(function(){
-      res.send('Failed to update user.');
-    }).then(function(){
-      // res.redirect("/");
-      res.send('User updated.');
+      [req.body.email, req.session.user.email])
+      .then(function(){
+      res.redirect("/user/success");
+      // res.send('User updated.');
+    })
+      .catch(function(){
+        res.redirect('/user/tryagain');
+        // res.send('Failed to update user.');
     });
 });
 
 app.get('/tryagain', function(req, res){
   res.render('login/tryagain');
-});
+});//remove this
 
 app.post('/login', function(req, res){
   let data = req.body;
@@ -132,6 +143,44 @@ app.post('/login', function(req, res){
       });
     });
 });
+
+app.get('/user/show', function(req, res){
+  db
+  .any("SELECT * FROM users")
+  .then(function(data){
+    let user_data = {
+      users: data
+    }
+    res.render('user/show', user_data);
+  })
+});
+
+app.get('/user/show/:id', function(req,res){
+  let id = req.params.id;
+  db
+  .one("SELECT * FROM users WHERE id = $1", [id])
+  .then(function(data){
+    let user_data = {
+      users: data
+    }
+    res.render("/user/show/", user_data);
+  });
+});
+
+app.get('/delete/:id', function (req, res){
+  let id = req.params.id;
+  db
+  .none("DELETE FROM users WHERE id = $1", [id])
+  .then(function(){
+  res.redirect("/user/success");
+  // res.send('User updated.');
+  })
+  .catch(function(){
+    res.redirect('/user/tryagain');
+  });
+});
+
+
 
 app.get('/logout', function(req, res){
   req.session.user = false;
