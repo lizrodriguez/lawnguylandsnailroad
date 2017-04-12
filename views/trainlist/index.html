@@ -6,22 +6,23 @@
   <title>Lawn Guyland Snail Road</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <script src="/js/jquery.js"></script>
-  <!-- <script src="/js/materialize.min.js"></script> -->
+  <script src="/js/materialize.min.js"></script>
   <script src="/js/materialize.js"></script>
   <script src="/js/client.js"></script>
 </head>
 
-<nav>
-    <div class="nav-wrapper #0d47a1 blue darken-4">
-      <a href="/" class="brand-logo right"><img border="0" alt="snail" src="/images/snail.png" width="50" height="40">Lawn Guyland Snail Road</a>
-      <ul id="nav-mobile" class="left">
-        <li><a href="http://www.mta.info">MTA</a></li>
-        <li><a href="http://traintime.lirr.org/">Traintime</a></li>
-      </ul>
-    </div>
-  </nav>
-
+  <nav>
+      <div class="nav-wrapper #0d47a1 blue darken-4">
+        <a href="/" class="brand-logo left"> Lawn Guyland Snail Road <img border="0" alt="LGSR" src="/images/snail.png" width="50" height="40"></a>
+        <ul id="nav-mobile" class="right">
+        <li id="forecast"></li>
+        <li id="weatherIcon"></li>
+        </ul>
+      </div>
+    </nav>
+<main>
 <body>
   <div class="container">
     <div class="row">
@@ -39,13 +40,35 @@
           {{/trains}}
         </select>
       </div>
+
+      <div class ="col s6">
+      <h6 id="results"></h6>
+      <!-- <h5>Save as Fave</h5>
+      <button class="btn-floating waves-effect waves-light red"><i class="material-icons">star</i></button> -->
+      </div>
+
     </div><!-- end row -->
-    <button type="submit" class="waves-effect waves-light btn btn btn-primary #2196f3 blue">Submit</button>
-    <a href="/user" name="button" class="waves-effect waves-light btn #2196f3 blue">Update email</a>
-    <a href="/user/show" name="button" class="waves-effect waves-light btn #2196f3 blue">Delete account</a>
-    <!-- results card -->
-    <p id ="results"></p>
+    <button type="submit" class="waves-effect waves-light btn btn btn-primary blue">Submit</button>
+    <a href="/user" name="button" class="waves-effect waves-light btn blue">Update</a>
+    <a href="/user/show" name="button" class="waves-effect waves-light btn blue">Delete</a>
+
+    <!-- <div class="row">
+    </div> -->
     </div><!-- end container -->
+</main>
+
+<footer class="page-footer blue lighten-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <p class="#424242 grey-text text-darken-3">Made with &hearts; by <a href="https://github.com/lizrodriguez">Liz Rodriguez</a></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <p class="#424242 grey-text text-darken-3">&copy; 2017</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 

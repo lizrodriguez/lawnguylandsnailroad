@@ -6,33 +6,48 @@
   <title>Lawn Guyland Snail Road</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <script src="/js/jquery.js"></script>
-  <!-- <script src="/js/materialize.min.js"></script> -->
+  <script src="/js/materialize.min.js"></script>
   <script src="/js/client.js"></script>
 </head>
 
 <nav>
     <div class="nav-wrapper #0d47a1 blue darken-4">
-      <a href="/" class="brand-logo right"><img border="0" alt="snail" src="/images/snail.png" width="50" height="40">Lawn Guyland Snail Road</a>
-      <ul id="nav-mobile" class="left">
-        <li><a href="http://www.mta.info">MTA</a></li>
-        <li><a href="http://traintime.lirr.org/">Traintime</a></li>
+      <a href="/" class="brand-logo left"> Lawn Guyland Snail Road <img border="0" alt="snail" src="/images/snail.png" width="50" height="40"></a>
+      <ul id="nav-mobile" class="right">
+      <li id="forecast"></li>
+      <li id="weatherIcon"></li>
       </ul>
     </div>
   </nav>
-
+<main>
 <body>
   <div class="container">
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s4">
         <h5>Select email to delete:</h5>
         {{#users}}
-        <a href="/delete/{{id}}">{{email}}</a><br>
+        <ul class="collection">
+        <li class="collection-item"><a href="/delete/{{id}}">{{email}}</a></li>
+      </ul>
         {{/users}}
       </div>
     </div>
   </div>
+</main>
+<footer class="page-footer blue lighten-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <p class="#424242 grey-text text-darken-3">Made with &hearts; by <a href="https://github.com/lizrodriguez">Liz Rodriguez</a></p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <p class="#424242 grey-text text-darken-3">&copy; 2017</p>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 
 </html>

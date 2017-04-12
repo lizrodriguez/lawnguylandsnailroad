@@ -2,6 +2,20 @@ $(document).ready(function() {
 
   $('select').material_select();
 
+  let $forecast = $('#forecast');
+  let $weatherIcon = $('#weatherIcon');
+
+  //get current weather in NYC/LI
+  $.ajax({
+    url: "http://api.openweathermap.org/data/2.5/weather?q=new+york&units=imperial&appid=[API key here]",
+    method: "GET",
+      success: function(response){
+        let $icon = response.weather[0].icon;
+        $weatherIcon.html("<img src='http://openweathermap.org/img/w/"+ $icon + ".png'>");
+        $forecast.html(response.name + " weather is " + Math.round(response.main.temp) + "&#8457;");
+      }
+    });
+
   $('button').on('click',function(){
     let $departure = $('[name="departure"]').val();
     console.log("The 3 letter departure station is: " + $departure);
@@ -11,7 +25,7 @@ $(document).ready(function() {
     // arrival time not available through this api url
     let trains = "";
     let stops = "";
-    let $ul = $('<ul>');
+    let $ul = $('<ul class="collection">');
     let $results;
     $.ajax({ //https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
       url: "https://traintime.lirr.org/api/Departure?loc=" + $departure,
@@ -32,27 +46,18 @@ $(document).ready(function() {
             let trackNum = res.TRAINS[i].TRACK;
               if(stops === $arrival){
                 //append results to page
-                let $li = $('<li>' + time[1] + " to " + trainline + " trainline going " + direction + "-bound: Track " + trackNum + '</li>');
+                let $li = $('<li class="collection-item">' + time[1] + " to " + trainline + " trainline going " + direction + "-bound: Track " + trackNum + '</li>');
                 $results = $ul.append($li);
-                $('p#results').append($results);
+                $('#results').append($results);
               }
           }
         }//end for i & j
 
       },//end success function
-
       error: function(res){
-        $('p#results').text("Please try again");
+        $('#results').text("Please try again");
         //throw error, try again
       }
     })
-
   }) //button
-
-
-
-
-
-
-
 });
