@@ -1,5 +1,7 @@
 Lawn Guyland Snail Road - A LIRR timetable clone using the MTA and OpenWeather APIs.
+
 Project 2 for GA - WDI
+
 Liz Rodriguez
 
 ![project2](https://github.com/lizrodriguez/lawnguylandsnailroad/blob/master/other_files/screenshot.png)
@@ -8,6 +10,7 @@ This app uses node.js with express, mustache for templating, and postgres for a 
 Bcrypt was used to hash signup password for authentication.
 
 Snail logo is from  https://pixabay.com
+
 OpenWeather API used to grab weather in the nav bar: http://openweathermap.org/api
 
 MTA's actual API is not functional, so I've used the public URL api to retrieve the LIRR train JSON:  http://datamine.mta.info/
