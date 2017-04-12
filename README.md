@@ -2,7 +2,7 @@ Lawn Guyland Snail Road - A LIRR timetable clone using the MTA and OpenWeather A
 Project 2 for GA - WDI
 Liz Rodriguez
 
-[[https://github.com/lizrodriguez/lawnguylandsnailroad/blob/master/other_files/screenshot.png]]
+![project2](https://github.com/lizrodriguez/lawnguylandsnailroad/blob/master/other_files/screenshot.png)
 
 This app uses node.js with express, mustache for templating, and postgres for a local database.
 Bcrypt was used to hash signup password for authentication.
