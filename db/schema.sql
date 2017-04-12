@@ -11,7 +11,8 @@ CREATE TABLE trains (
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE,
-  password VARCHAR(255)
+  password VARCHAR(255),
+  stationID VARCHAR(50)
 );
 
 CREATE TABLE usertrains (

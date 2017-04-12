@@ -33,6 +33,9 @@
             <option value="{{shortname}}">{{longname}}</option>
           {{/trains}}
         </select>
+        <form class="col s12" action="/fave" method="post">
+        <a href="/trainlist" name="button" class="btn-floating btn-small waves-effect waves-light red" value="{{shortname}}">{{shortname}}<i class="material-icons">star</i></a>
+        </form>
         <h5>Select Arrival Train</h5>
         <select name="arrival">
           {{#trains}}
@@ -43,8 +46,6 @@
 
       <div class ="col s6">
       <h6 id="results"></h6>
-      <!-- <h5>Save as Fave</h5>
-      <button class="btn-floating waves-effect waves-light red"><i class="material-icons">star</i></button> -->
       </div>
 
     </div><!-- end row -->

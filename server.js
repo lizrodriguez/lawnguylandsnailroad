@@ -37,24 +37,10 @@ app.get('/login', function(req, res){
       "email": req.session.user.email
     };
     res.render('login/index', data);
-    // res.redirect('/trainlist');
   } else {
     res.render('login/index');
   }
 });
-
-// app.get('/trainlist', function(req, res){
-//   if(req.session.user){
-//     let data = {
-//       "logged_in": true,
-//       "email": req.session.user.email
-//     };
-//     res.render('trainlist/index', data);
-//   } else {
-//     res.render('trainlist/index');
-//   }
-// });
-
 
 app.get('/trainlist', function(req, res){
   db.any("SELECT * FROM trains")
@@ -62,20 +48,29 @@ app.get('/trainlist', function(req, res){
         let trains_data = {
           trains: data
           }
-      // console.log(trains_data);
-      res.render('trainlist/index', trains_data); //gets list of trains to put on /trainslist
+      res.render('trainlist/index', trains_data);
     });
 });
 
-// app.post('/user/fave', function(req, res){
-//   console.log(req.body);
+// app.post('/trainlist', function(req, res){
+//   let data = req.body;
+//   console.log("req.body:", data)
 //     db
-//       .none("UPDATE users SET stationID = $1 WHERE stationID = $2",
-//         [req.body.stationID, req.session.user.stationID])
-//       .then(function(){
-//         console.log("Fave saved: " + data);
+//       .none(
+//           "INSERT INTO users(stationid) VALUES ($1)",
+//           [data.stationid]
+//     ).then(function(){
+//         db.none(
+//           "INSERT INTO trains(shortname) VALUES ($1)",
+//       [data.shortname]
+//         ).then(function(){
+//             res.redirect("/trainlist")
+//             })
+//             .catch(function(e){
+//               res.send('data not accepted: ' + e);
+//             });
+//         });
 //     });
-// });
 
 app.get('/signup', function(req, res){
   res.render('signup/index');
@@ -95,8 +90,7 @@ app.post('/signup', function(req, res){
       ).catch(function(e){
         res.redirect('/signup/tryagain');
       }).then(function(){
-        console.log(data.email + hash + "User created!");
-        // res.send('User created!');
+        console.log(data.email + hash + " User created! ");
         res.redirect('/trainlist');
       });
     });

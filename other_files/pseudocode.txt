@@ -29,6 +29,4 @@ WDI Project 2
 /user delete
 
 Left to do:
-
-API call - change to backend?
 -keep route as favorite

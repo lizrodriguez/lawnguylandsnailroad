@@ -46,7 +46,7 @@ $(document).ready(function() {
             let trackNum = res.TRAINS[i].TRACK;
               if(stops === $arrival){
                 //append results to page
-                let $li = $('<li class="collection-item">' + time[1] + " to " + trainline + " trainline going " + direction + "-bound: Track " + trackNum + '</li>');
+                let $li = $('<li class="collection-item">' + time[1] + " to " + trainline + " going " + direction + "-bound: Track " + trackNum + '</li>');
                 $results = $ul.append($li);
                 $('#results').append($results);
               }
