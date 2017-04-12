@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   //get current weather in NYC/LI
   $.ajax({
-    url: "http://api.openweathermap.org/data/2.5/weather?q=new+york&units=imperial&appid=[API key here]",
+    url: "http://api.openweathermap.org/data/2.5/weather?q=new+york&units=imperial&appid=[API KEY]",
     method: "GET",
       success: function(response){
         let $icon = response.weather[0].icon;
